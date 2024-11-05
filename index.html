@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <div>
+  <img src="https://i.postimg.cc/C17JpfkZ/unnamed.png" alt="Avatar">
+  </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><h1></h>
+    <title><b><u> Strength Password Make</u></b></title>
+    <style>
+        body {
+            font-family:Papyrus, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0f9cf3;
+        }
+        
+        .container {{
+            font-family:Cursive, sans-serif;
+            width: 400px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #password {{
+            font-family:Cursive, sans-serif;
+            width: 50Fantasy;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 500px;
+        }
+
+        .strength-bar {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .strength {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        /* Colors for strength levels */
+        .weak {
+            background-color: #ff4d4d;
+        }
+
+        .medium {
+            background-color: #ffcc00;
+        }
+
+        .strong {
+            background-color: #00b300;
+        }
+
+        .very-strong {
+            background-color: #0066ff;
+        }
+    </style>
+</head>
+  
+<body><center>
+
+    <div class="container"><p><h5>This is our programming club.I am a mamber this club.I Am Al Rahi.I read in class 9.</h5></p>
+        <h3> Strength Password Make</h3>
+        <input type="password" id="password" placeholder="Enter your them">
+        <div class="strength-bar">
+            <div id="strength-bar" class="strength"></div>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.getElementById('strength-bar');
+        const message = document.getElementById('message');
+
+        passwordInput.addEventListener('input', updateStrengthBar);
+
+        function updateStrengthBar() {
+            const password = passwordInput.value;
+            let strength = 0;
+
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[@$!%*?&#]/)) strength++;
+
+            // Update strength bar width and color
+            strengthBar.style.width = (strength / 5) * 100 + '%';
+
+            // Set message and color based on strength
+            if (strength <= 1) {
+                strengthBar.className = 'strength weak';
+                message.textContent = 'Weak Password';
+                message.style.color = '#ff4d4d';
+            } else if (strength == 2) {
+                strengthBar.className = 'strength medium';
+                message.textContent = 'Medium Password';
+                message.style.color = '#ffcc00';
+            } else if (strength == 3) {
+                strengthBar.className = 'strength strong';
+                message.textContent = 'Strong Password';
+                message.style.color = '#00b300';
+            } else if (strength >= 4) {
+                strengthBar.className = 'strength very-strong';
+                message.textContent = 'Very Strong Password';
+                message.style.color = '#0066ff';
+            }
+        }
+    </script>
+ 
+</body>
+</html>
